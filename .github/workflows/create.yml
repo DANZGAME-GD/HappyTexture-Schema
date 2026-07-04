@@ -19,10 +19,10 @@ jobs:
       - name: Get version from pack.json
         id: version
         run: |
-          VERSION=$(jq -r '.version' Pack.json)
+          VERSION=$(jq -r '.version' pack.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "tag=v$VERSION" >> $GITHUB_OUTPUT
-          NAME=$(jq -r '.name' Pack.json)
+          NAME=$(jq -r '.name' pack.json)
           echo "name=$NAME" >> $GITHUB_OUTPUT
 
       - name: Get changelog for this version
