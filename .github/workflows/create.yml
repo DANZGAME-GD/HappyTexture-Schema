@@ -22,8 +22,8 @@ jobs:
           VERSION=$(jq -r '.version' pack.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "tag=v$VERSION" >> $GITHUB_OUTPUT
-          NAME=$(jq -r '.name' pack.json)
-          echo "name=$NAME" >> $GITHUB_OUTPUT
+          ID=$(jq -r '.id' pack.json)
+          echo "name=$ID" >> $GITHUB_OUTPUT
 
       - name: Get changelog for this version
         id: changelog
@@ -36,8 +36,9 @@ jobs:
 
       - name: Create ZIP file
         run: |
+          ZIP_NAME="${{ steps.version.outputs.name }}.zip"
+          echo "Creating ZIP file: $ZIP_NAME"
           mkdir temp_pack
-
           rsync -av . temp_pack \
             --exclude ".git" \
             --exclude ".vscode" \
@@ -47,7 +48,7 @@ jobs:
             --exclude "changelog.json" \
             --exclude "README.md"
           cd temp_pack
-          zip -r ../Texture-Pack.zip .
+          zip -r ../$ZIP_NAME .
           cd ..
           rm -rf temp_pack
 
