@@ -1,6 +1,6 @@
 // here you can add a changelog for your texture pack, this will be displayed in the release notes when you create a new release
 {
-    "1.0.0": [
+    "v1.0.0": [
         "Initial release"
     ]
 }
