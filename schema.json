@@ -214,6 +214,7 @@
         "scale-multiplier": {"type": "number"},
         "z-order": { "type": "number"},
         "font": { "type": "string"},
+        "text": {"type": "string"},
         "blending": {
           "type": "object",
           "properties": {
@@ -297,7 +298,7 @@
                   "BounceInOut",
                   "BounceIn",
                   "BounceOut",
-                  "ExponentialInOUt",
+                  "ExponentialInOut",
                   "ExponentialIn",
                   "ExponentialOut",
                   "SineInOut",
@@ -350,7 +351,8 @@
                 "onTreasureRoom",
                 "onWeeklyLevel",
                 "onShards",
-                "onShop"
+                "onShop",
+                "onGeode"
               ]
             }
           }
@@ -361,7 +363,8 @@
     "after-transition": {
       "type": "object",
       "properties": {
-        "children": { "$ref": "#/properties/children" }
+        "children": { "$ref": "#/properties/children" },
+        "event": { "$ref": "#/properties/event"}
       }
     },
     "event": { 
@@ -409,6 +412,14 @@
         }
       },
       "additionalProperties": true 
+    },
+    "parent": {
+      "type": "object",
+      "properties": {
+        "parent": { "$ref": "#/properties/parent"},
+        "attributes": { "$ref": "#/properties/attributes"},
+        "children": { "$ref": "#/properties/children"}
+      }
     }
   }
 }
